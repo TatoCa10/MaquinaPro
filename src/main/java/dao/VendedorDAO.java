@@ -184,7 +184,6 @@ public class VendedorDAO {
             stmt.setString(1, correo);
             ResultSet res = stmt.executeQuery();
             
-
             if(res.next()){
                 return res.getBoolean("noti");
             }else{
