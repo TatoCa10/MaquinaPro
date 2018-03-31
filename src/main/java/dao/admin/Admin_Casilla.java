@@ -88,6 +88,11 @@ public class Admin_Casilla {
         ArrayList<Casilla> respuesta = new ArrayList<>();
         ArrayList<Producto> productos = new ArrayList<>();
         productos = producoDAO.leerProducto();
+        
+        for (int i = 0; i < productos.size(); i++) {
+            System.out.println("Rescatando productos:");
+            System.out.println(i +""+ productos.get(i).getNombre());
+        }
         String consulta = "SELECT * FROM Casilla";
 
         try {
