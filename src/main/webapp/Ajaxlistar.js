@@ -8,7 +8,17 @@ $(document).ready(function () {
         success: function (data) {
             console.log("DATOS SUCCESS");
             for (var i = 0; i < data.length; i++) {
-            $("#llegada").append("<div class='module'><img src='"+data.casillas[i].source+"' alt='"+data.casillas[i].nombre+"'><div>"+data.casillas[i].ubicacion+"</div></div>");
+                
+                console.log(data.casillas[i].nombre);
+                console.log(data.casillas[i].source);
+                console.log(data.casillas[i].ubicacion);
+                
+            $("#llegada").append(
+                    
+                    "<div class='module'><img src='"+data.casillas[i].source+"' alt='"+data.casillas[i].nombre+"'><div>"+data.casillas[i].ubicacion+"</div></div>"
+                    
+                    
+                    );
                 
             }
            // $("#llegada").append("<div class='module' style='height:140px'>" + data.test + "<div>D4</div></div>");
