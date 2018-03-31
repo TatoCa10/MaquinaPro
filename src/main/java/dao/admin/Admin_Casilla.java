@@ -91,7 +91,8 @@ public class Admin_Casilla {
         
         for (int i = 0; i < productos.size(); i++) {
             System.out.println("Rescatando productos:");
-            System.out.println(i +""+ productos.get(i).getNombre());
+            System.out.println(i +" "+ productos.get(i).getNombre());
+            System.out.println("Ruta: "+ productos.get(i).getRuta());
         }
         String consulta = "SELECT * FROM Casilla";
 
