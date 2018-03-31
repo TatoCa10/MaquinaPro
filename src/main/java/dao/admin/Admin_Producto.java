@@ -87,7 +87,7 @@ public class Admin_Producto {
     
     public ArrayList<Producto> leerProducto() {
         //1.Consulta
-        ArrayList<Producto> respuesta = new ArrayList<Producto>();
+        ArrayList<Producto> respuesta = new ArrayList<>();
         String consulta = "SELECT * FROM Producto";
         try {
             //----------------------------
@@ -100,7 +100,12 @@ public class Admin_Producto {
             //----------------------------
             //Recorrido sobre el resultado
             while (resultado.next()) {
-                respuesta.add((Producto) resultado);
+                Producto prod = new Producto();
+                
+                prod.setNombre(resultado.getString(1));
+                prod.setPrecio(resultado.getInt(2));
+                prod.setRuta(resultado.getString(3));
+                respuesta.add(prod);
             }
 
         } catch (SQLException ex) {
