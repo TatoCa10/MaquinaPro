@@ -13,8 +13,8 @@
         <servlet-class>controlador.ServletCargaLista</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LoginUsuarioServlet</servlet-name>
-        <servlet-class>controlador.LoginUsuarioServlet</servlet-class>
+        <servlet-name>Servlet_Productos</servlet-name>
+        <servlet-class>controlador.Servlet_Productos</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListarTiendasServlet</servlet-name>
@@ -75,8 +75,8 @@
         <servlet-class>controlador.ListarPedidosServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LoginUsuarioServlet</servlet-name>
-        <url-pattern>/LoginUsuarioServlet</url-pattern>
+        <servlet-name>Servlet_Productos</servlet-name>
+        <url-pattern>/Servlet_Productos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AgregarProductoServlet</servlet-name>
