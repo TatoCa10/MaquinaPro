@@ -96,9 +96,10 @@ public class ServletCargaLista extends HttpServlet {
 
             //this.productos = prodDAO.listarTodo();
             JSONArray array = new JSONArray();
-            JSONObject json = new JSONObject();
+            
 
             for (int i = 0; i < casillas.size(); i++) {
+                JSONObject json = new JSONObject();
                 
             json.put("source",casillas.get(i).getProducto().getRuta());
                 System.out.println("Ruta (en servlet): "+casillas.get(i).getProducto().getRuta());
