@@ -8,7 +8,7 @@ $(document).ready(function () {
         success: function (data) {
             console.log("DATOS SUCCESS");
             console.log("voy a entrar al for");
-            for (var i = 0; i < data.length; i++) {
+            for (var i = 0; i < data.casillas.length; i++) {
                 console.log("ENTRO AL FOR");
                 console.log(data.casillas[i].nombre);
                 console.log(data.casillas[i].source);
