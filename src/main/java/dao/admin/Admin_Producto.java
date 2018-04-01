@@ -19,8 +19,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
 import util.Conexion;
 import vo.Producto;
 
@@ -42,7 +40,7 @@ public class Admin_Producto {
         boolean resultado = false;
         try {
             //1.Establecer la consulta
-            String consulta = "INSERT INTO Productos VALUES(?,?)";
+            String consulta = "INSERT INTO Producto VALUES(?,?)";
             //2. Crear el PreparedStament
             PreparedStatement statement
                     = this.conexion.prepareStatement(consulta);
