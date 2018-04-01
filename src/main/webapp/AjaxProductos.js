@@ -16,6 +16,7 @@ $(document).ready(function () {
                 console.log("DATOS SUCCESS");
                 $("#return").append("<p>" + data.confirmacion + "</p><br>");
                 /*document.getElementById("return").innerHTML = data.confirmacion;*/
+                location.reload();
             },
             error: function () {
                 console.log("ERROR");
