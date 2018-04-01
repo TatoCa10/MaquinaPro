@@ -42,19 +42,20 @@ public class Admin_Producto {
         boolean resultado = false;
         try {
             //1.Establecer la consulta
-            String consulta = "INSERT INTO Productos VALUES(?,?,?)";
+            String consulta = "INSERT INTO Productos VALUES(?,?)";
             //2. Crear el PreparedStament
             PreparedStatement statement
                     = this.conexion.prepareStatement(consulta);
             //-----------------------------------
             statement.setString(1, producto.getNombre());
             statement.setInt(2, producto.getPrecio());
-            statement.setString(3, producto.getRuta());
+            
             
             
             //--------------------------------------
             //3. Hacer la ejecucion
             resultado = statement.execute();
+            return true;
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -65,7 +66,7 @@ public class Admin_Producto {
     
     public boolean modificarProducto(Producto producto) {
         boolean result = false;
-        String query = "update Producto set Nombre = ?,Precio = ?, Ruta = ? where Nombre = ?";
+        String query = "update Producto set Nombre = ?,Precio = ? where Nombre = ?";
         PreparedStatement preparedStmt = null;
         try {
             preparedStmt = this.conexion.prepareStatement(query);
@@ -104,7 +105,6 @@ public class Admin_Producto {
                 
                 prod.setNombre(resultado.getString(1));
                 prod.setPrecio(resultado.getInt(2));
-                prod.setRuta(resultado.getString(3));
                 respuesta.add(prod);
             }
 
