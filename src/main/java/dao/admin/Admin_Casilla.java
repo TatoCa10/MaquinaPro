@@ -36,21 +36,37 @@ public class Admin_Casilla {
 
     public boolean crearCasilla(Casilla casilla) {
         boolean resultado = false;
-        try {
-            //1.Establecer la consulta
-            String consulta = "INSERT INTO Casilla VALUES(?,?,?,?,?)";
-            //2. Crear el PreparedStament
-            PreparedStatement statement
-                    = this.conexion.prepareStatement(consulta);
-            //-----------------------------------
-            statement.setString(1, casilla.getID());
-            statement.setInt(2, casilla.getEspacio());
-            statement.setString(3, casilla.getProducto().getNombre());
-            statement.setInt(4, casilla.getCantidadProducto());
 
-            //--------------------------------------
-            //3. Hacer la ejecucion
-            resultado = statement.execute();
+        ArrayList<Casilla> casi = leerCasilla();
+        try {
+            for (int i = 0; i < casilla.getEspacio(); i++) {
+                //1.Establecer la consulta
+                String consulta = "INSERT INTO Casilla VALUES(?,?,?)";
+                //2. Crear el PreparedStament
+                PreparedStatement statement
+                        = this.conexion.prepareStatement(consulta);
+                //-----------------------------------
+
+                if (casi != null) {
+                    statement.setString(1, Integer.toString(i + casi.size()));
+                    statement.setString(2, "Vacio");
+                    statement.setInt(3, 0);
+                } else {
+
+                    statement.setString(1, Integer.toString(i));
+                    statement.setString(2, "Vacio");
+                    statement.setInt(3, 0);
+                }
+
+                //--------------------------------------
+                //3. Hacer la ejecucion
+                resultado = statement.execute();
+
+                if (i == casilla.getEspacio()) {
+
+                    return true;
+                }
+            }
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -61,14 +77,18 @@ public class Admin_Casilla {
 
     public boolean modificarCasilla(Casilla casilla) {
         boolean result = false;
-        String query = "update Casilla set ID = ?, Espacio = ?, Producto = ?, CantidadProducto= ? where ID = ?";
+        
+        if (leerCasilla() == null) {
+            return result;
+        }
+        String query = "update Casilla set ID = ?, Producto = ?, CantidadProducto= ? where ID = ?";
         PreparedStatement preparedStmt = null;
         try {
             preparedStmt = this.conexion.prepareStatement(query);
             preparedStmt.setString(1, casilla.getID());
-            preparedStmt.setInt(2, casilla.getEspacio());
-            preparedStmt.setString(3, casilla.getProducto().getNombre());
-            preparedStmt.setInt(4, casilla.getCantidadProducto());
+           // preparedStmt.setInt(2, casilla.getEspacio());
+            preparedStmt.setString(2, casilla.getProducto().getNombre());
+            preparedStmt.setInt(3, casilla.getCantidadProducto());
 
             if (preparedStmt.executeUpdate() > 0) {
                 result = true;
@@ -88,11 +108,11 @@ public class Admin_Casilla {
         ArrayList<Casilla> respuesta = new ArrayList<>();
         ArrayList<Producto> productos = new ArrayList<>();
         productos = producoDAO.leerProducto();
-        
+
         for (int i = 0; i < productos.size(); i++) {
             System.out.println("Rescatando productos:");
-            System.out.println(i +" "+ productos.get(i).getNombre());
-            System.out.println("Ruta: "+ productos.get(i).getRuta());
+            System.out.println(i + " " + productos.get(i).getNombre());
+            System.out.println("Ruta: " + productos.get(i).getRuta());
         }
         String consulta = "SELECT * FROM Casilla";
 

@@ -20,17 +20,17 @@ public class Servicio_Casilla {
     
     public Boolean entregarProducto(Casilla casillas){
     
-        ArrayList<Casilla> productos =casilla.leerCasilla();
+        ArrayList<Casilla> casillaVO =casilla.leerCasilla();
         Boolean respuesta = false;
         
-        for (int i = 0; i < productos.size(); i++) {
+        for (int i = 0; i < casillaVO.size(); i++) {
             
-            if (productos.get(i).getID().equals(casillas.getID())){
+            if (casillaVO.get(i).getID().equals(casillas.getID())){
                 
-                casillas.setID(productos.get(i).getID());
-                casillas.setEspacio(productos.get(i).getEspacio());                
-                casillas.setCantidadProducto(productos.get(i).getCantidadProducto()-1);
-                casillas.setProducto(productos.get(i).getProducto());
+                casillas.setID(casillaVO.get(i).getID());
+                casillas.setEspacio(casillaVO.get(i).getEspacio());                
+                casillas.setCantidadProducto(casillaVO.get(i).getCantidadProducto()-1);
+                casillas.setProducto(casillaVO.get(i).getProducto());
                 
                 casilla.modificarCasilla(casillas);
                 
