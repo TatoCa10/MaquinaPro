@@ -90,6 +90,8 @@ public class ServletCasillas extends HttpServlet {
                 producto.setNombre(Nombre);
                 casilla.setProducto(producto);
                 casilla.setCantidadProducto(Integer.parseInt(Cantidad));
+                
+                System.out.println(Nombre);
 
                 if (casillaDAO.modificarCasilla(casilla)) {
 

@@ -89,6 +89,7 @@ public class Admin_Casilla {
            // preparedStmt.setInt(2, casilla.getEspacio());
             preparedStmt.setString(2, casilla.getProducto().getNombre());
             preparedStmt.setInt(3, casilla.getCantidadProducto());
+            preparedStmt.setString(4, casilla.getID());
 
             if (preparedStmt.executeUpdate() > 0) {
                 result = true;
