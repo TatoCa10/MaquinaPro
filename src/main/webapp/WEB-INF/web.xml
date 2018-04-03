@@ -17,8 +17,8 @@
         <servlet-class>controlador.Servlet_Productos</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListarTiendasServlet</servlet-name>
-        <servlet-class>controlador.ListarTiendasServlet</servlet-class>
+        <servlet-name>ServletCasillas</servlet-name>
+        <servlet-class>controlador.ServletCasillas</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditarCompradorServlet</servlet-name>
@@ -95,8 +95,8 @@
         <url-pattern>/LoginVendedorServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListarTiendasServlet</servlet-name>
-        <url-pattern>/ListarTiendasServlet</url-pattern>
+        <servlet-name>ServletCasillas</servlet-name>
+        <url-pattern>/ServletCasillas</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletCargaLista</servlet-name>
