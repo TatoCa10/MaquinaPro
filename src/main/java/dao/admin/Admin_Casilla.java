@@ -121,8 +121,7 @@ public class Admin_Casilla {
         for (int i = 0; i < productos.size(); i++) {
             System.out.println("Rescatando productos:");
             System.out.println(i + " " + productos.get(i).getNombre());
-            System.out.println("Ruta: " + productos.get(i).getRuta());
-        }
+               }
         String consulta = "SELECT * FROM Casilla";
 
         try {
@@ -139,17 +138,17 @@ public class Admin_Casilla {
                 Casilla casillaVO = new Casilla();
 
                 casillaVO.setID(resultado.getString(1));
-                casillaVO.setEspacio(resultado.getInt(2));
+                
 
                 for (int i = 0; i < productos.size(); i++) {
 
-                    if (productos.get(i).nombre.equals(resultado.getString(3))) {
+                    if (productos.get(i).nombre.equals(resultado.getString(2))) {
                         casillaVO.setProducto(productos.get(i));
                     }
 
                 }
 
-                casillaVO.setCantidadProducto(resultado.getInt(4));
+                casillaVO.setCantidadProducto(resultado.getInt(3));
                 respuesta.add(casillaVO);
             }
 
