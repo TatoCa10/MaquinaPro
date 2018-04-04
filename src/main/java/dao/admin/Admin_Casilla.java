@@ -151,6 +151,10 @@ public class Admin_Casilla {
                 casillaVO.setCantidadProducto(resultado.getInt(3));
                 respuesta.add(casillaVO);
             }
+            
+            for (int i = 0; i < respuesta.size(); i++) {
+                System.out.println("ID desde Metedo: "+respuesta.get(i).getID());
+            }
 
         } catch (SQLException ex) {
             ex.printStackTrace();
