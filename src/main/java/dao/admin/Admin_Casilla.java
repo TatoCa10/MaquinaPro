@@ -152,7 +152,7 @@ public class Admin_Casilla {
             System.out.println("Rescatando productos:");
             System.out.println(i + " " + productos.get(i).getNombre());
         }
-        String consulta = "SELECT * FROM Casilla";
+        String consulta = "SELECT * FROM Casilla order by id";
 
         try {
             //Statement
