@@ -169,7 +169,6 @@ public class Admin_Casilla {
 
                 casillaVO.setID(resultado.getString(1));
 
-                for (int i = 0; i < cantCasillas; i++) {
 
                     if (resultado.getString(2).equals("Vacio")) {
                         Producto prod = new Producto();
@@ -180,12 +179,11 @@ public class Admin_Casilla {
 
                         for (int j = 0; j < productos.size(); j++) {
 
-                            if (productos.get(i).nombre.equals(resultado.getString(2))) {
-                                casillaVO.setProducto(productos.get(i));
+                            if (productos.get(j).nombre.equals(resultado.getString(2))) {
+                                casillaVO.setProducto(productos.get(j));
+                                break;
                             }
                         }
-                    }
-
                 }
 
                 casillaVO.setCantidadProducto(resultado.getInt(3));
