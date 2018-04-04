@@ -103,7 +103,7 @@ public class Admin_Caja {
             //----------------------------
             //Recorrido sobre el resultado
             while (resultado.next()) {
-                respuesta[i]= resultado.getInt(i);
+                respuesta[i]= resultado.getInt(1);
                 i++;
             }
 
@@ -119,7 +119,7 @@ public class Admin_Caja {
         //1.Consulta
         int[] respuesta = new int[9];
         int i = 0;
-        String consulta = "SELECT espacioMax FROM Caja";
+        String consulta = "SELECT espacioMaximo FROM Caja";
         try {
             //----------------------------
             //Statement
@@ -131,7 +131,7 @@ public class Admin_Caja {
             //----------------------------
             //Recorrido sobre el resultado
             while (resultado.next()) {
-                respuesta[i]= resultado.getInt(i);
+                respuesta[i]= resultado.getInt(1);
                 i++;
             }
 
