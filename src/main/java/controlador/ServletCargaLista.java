@@ -89,7 +89,7 @@ public class ServletCargaLista extends HttpServlet {
             Admin_Casilla casilla = new Admin_Casilla();
             Casilla casillaVO = new Casilla();
             
-            ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+            ArrayList<Casilla> casillas = new ArrayList<>();
             casillas=casilla.leerCasilla();
             
             //this.prodDAO=new DAOProducto();
