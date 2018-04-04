@@ -110,34 +110,6 @@ public class Admin_Casilla {
         return result;
     }
 
-    public int numeroCasillas() {
-
-        String consulta = "SELECT COUNT(id) FROM Casilla";
-
-        try {
-            //Statement
-            Statement statement
-                    = this.conexion.createStatement();
-            //Ejecucion
-            ResultSet resultado
-                    = statement.executeQuery(consulta);
-            //----------------------------
-            //Recorrido sobre el resultado
-            if (resultado != null) {
-                int i = resultado.getInt(1);
-                System.out.println();
-                return i;
-
-            } else {
-                return 0;
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-
-        return 0;
-    }
 
     public ArrayList<Casilla> leerCasilla() {
         Admin_Producto producoDAO = new Admin_Producto();
@@ -146,7 +118,6 @@ public class Admin_Casilla {
         ArrayList<Casilla> respuesta = new ArrayList<>();
         ArrayList<Producto> productos = new ArrayList<>();
         productos = producoDAO.leerProducto();
-        int cantCasillas = numeroCasillas();
 
         for (int i = 0; i < productos.size(); i++) {
             System.out.println("Rescatando productos:");
