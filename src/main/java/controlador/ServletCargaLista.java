@@ -92,6 +92,9 @@ public class ServletCargaLista extends HttpServlet {
             ArrayList<Casilla> casillas = new ArrayList<>();
             casillas=casilla.leerCasilla();
             
+            System.out.println("AIDI: "+casillas.get(2).getID());
+            
+            
             //this.prodDAO=new DAOProducto();
 
             //this.productos = prodDAO.listarTodo();
@@ -101,7 +104,7 @@ public class ServletCargaLista extends HttpServlet {
             for (int i = 0; i < casillas.size(); i++) {
                 JSONObject json = new JSONObject();
                 
-                System.out.println(casillas.get(i).getProducto().getNombre());
+            System.out.println(casillas.get(i).getProducto().getNombre());
             json.put("nombre", casillas.get(i).getProducto().getNombre());
             json.put("ubicacion", casillas.get(i).getID());
                 System.out.println("ID (en servlet): "+casillas.get(i).getID());
