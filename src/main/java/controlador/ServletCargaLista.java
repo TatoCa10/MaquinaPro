@@ -92,7 +92,7 @@ public class ServletCargaLista extends HttpServlet {
             ArrayList<Casilla> casillas = new ArrayList<>();
             casillas=casilla.leerCasilla();
             
-            System.out.println("AIDI: "+casillas.get(2).getID());
+            System.out.println("Neim: "+casillas.get(2).getProducto().getNombre());
             
             
             //this.prodDAO=new DAOProducto();

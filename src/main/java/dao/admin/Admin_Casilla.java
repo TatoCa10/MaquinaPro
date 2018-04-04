@@ -153,7 +153,7 @@ public class Admin_Casilla {
             }
             
             for (int i = 0; i < respuesta.size(); i++) {
-                System.out.println("ID desde Metedo: "+respuesta.get(i).getID());
+                System.out.println("Prod desde Metedo: "+respuesta.get(i).getProducto().getNombre());
             }
 
         } catch (SQLException ex) {
