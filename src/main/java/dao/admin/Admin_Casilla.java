@@ -184,7 +184,6 @@ public class Admin_Casilla {
                                 casillaVO.setProducto(productos.get(i));
                             }
                         }
-
                     }
 
                 }
