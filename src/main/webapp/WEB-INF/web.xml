@@ -25,8 +25,8 @@
         <servlet-class>controlador.Servlet_Transacciones</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AgregarCarritoServlet</servlet-name>
-        <servlet-class>controlador.AgregarCarritoServlet</servlet-class>
+        <servlet-name>ServletCajas</servlet-name>
+        <servlet-class>controlador.ServletCajas</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AgregarProductoServlet</servlet-name>
@@ -83,8 +83,8 @@
         <url-pattern>/AgregarProductoServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AgregarCarritoServlet</servlet-name>
-        <url-pattern>/AgregarCarritoServlet</url-pattern>
+        <servlet-name>ServletCajas</servlet-name>
+        <url-pattern>/ServletCajas</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegistrarVendedorServlet</servlet-name>
