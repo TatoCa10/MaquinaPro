@@ -75,6 +75,7 @@ public class Admin_Caja {
             preparedStmt = this.conexion.prepareStatement(query);
             preparedStmt.setInt(1, i);
             preparedStmt.setInt(2, caja.getSaldo()[i]);
+            preparedStmt.setInt(3, i);
             if (preparedStmt.executeUpdate() > 0) {
                 result = true;
             }
