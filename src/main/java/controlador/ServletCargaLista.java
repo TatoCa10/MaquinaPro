@@ -101,7 +101,7 @@ public class ServletCargaLista extends HttpServlet {
             for (int i = 0; i < casillas.size(); i++) {
                 JSONObject json = new JSONObject();
                 
-            
+                System.out.println(casillas.get(i).getProducto().getNombre());
             json.put("nombre", casillas.get(i).getProducto().getNombre());
             json.put("ubicacion", casillas.get(i).getID());
                 System.out.println("ID (en servlet): "+casillas.get(i).getID());
