@@ -23,6 +23,7 @@ import org.eclipse.persistence.internal.eis.adapters.aq.AQRecord;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 import util.Conexion;
+import vo.Producto;
 import vo.Transaccion;
 
 public class Admin_Transaccion {
@@ -108,10 +109,13 @@ public class Admin_Transaccion {
             //Recorrido sobre el resultado
             while (resultado.next()) {
                 Transaccion transaccion = new Transaccion();
+                Producto producto = new Producto();
                 transaccion.setId(resultado.getString(1));
-                transaccion.setEntradaDinero(resultado.getInt(2));
-                transaccion.setSalidaDinero(resultado.getInt(3));
-                transaccion.setFecha(resultado.getDate(4));
+                producto.setNombre(resultado.getString(2));
+                transaccion.setProducto(producto);
+                transaccion.setEntradaDinero(resultado.getInt(3));
+                transaccion.setSalidaDinero(resultado.getInt(4));
+                transaccion.setFecha(resultado.getDate(5));
                 respuesta.add(transaccion);
             }
 
