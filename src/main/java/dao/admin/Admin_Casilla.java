@@ -62,11 +62,8 @@ public class Admin_Casilla {
                 //3. Hacer la ejecucion
                 resultado = statement.execute();
 
-                if (i == casilla.getEspacio()) {
-
-                    return true;
-                }
             }
+            return true;
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -77,16 +74,23 @@ public class Admin_Casilla {
 
     public boolean modificarCasilla(Casilla casilla) {
         boolean result = false;
+        Admin_Producto productoDAO = new Admin_Producto();
+        ArrayList<Producto> prod = new ArrayList<>();
+        prod = productoDAO.leerProducto();
         
         if (leerCasilla() == null) {
             return result;
         }
+
+        for (int i = 0; i < prod.size(); i++) {
+            if (prod.get(i).getNombre().equals(casilla.getProducto().getNombre())) {
+                
         String query = "update Casilla set ID = ?, Producto = ?, CantidadProducto= ? where ID = ?";
         PreparedStatement preparedStmt = null;
         try {
             preparedStmt = this.conexion.prepareStatement(query);
             preparedStmt.setString(1, casilla.getID());
-           // preparedStmt.setInt(2, casilla.getEspacio());
+            // preparedStmt.setInt(2, casilla.getEspacio());
             preparedStmt.setString(2, casilla.getProducto().getNombre());
             preparedStmt.setInt(3, casilla.getCantidadProducto());
             preparedStmt.setString(4, casilla.getID());
@@ -97,6 +101,10 @@ public class Admin_Casilla {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+            } else if(i==prod.size()){
+                return false;
+            }
         }
 
         return result;

@@ -15,9 +15,19 @@ import java.util.Date;
 public class Transaccion {
     
     public String id;
+    public Producto producto;
     public int entradaDinero;
     public int salidaDinero;
     public Date fecha;
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+    
 
     public String getId() {
         return id;

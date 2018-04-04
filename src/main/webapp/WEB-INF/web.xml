@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     
     <welcome-file-list>
-        <welcome-file>Casillas.html</welcome-file>
+        <welcome-file>MainAdmin.html</welcome-file>
     </welcome-file-list>
     <servlet>
         <servlet-name>ServletTest</servlet-name>
@@ -21,8 +21,8 @@
         <servlet-class>controlador.ServletCasillas</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EditarCompradorServlet</servlet-name>
-        <servlet-class>controlador.EditarCompradorServlet</servlet-class>
+        <servlet-name>Servlet_Transacciones</servlet-name>
+        <servlet-class>controlador.Servlet_Transacciones</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AgregarCarritoServlet</servlet-name>
@@ -107,8 +107,8 @@
         <url-pattern>/RegistroUsuarioServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>EditarCompradorServlet</servlet-name>
-        <url-pattern>/EditarCompradorServlet</url-pattern>
+        <servlet-name>Servlet_Transacciones</servlet-name>
+        <url-pattern>/Servlet_Transacciones</url-pattern>
     </servlet-mapping>   
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>

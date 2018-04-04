@@ -5,22 +5,24 @@ package controlador;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import dao.admin.Admin_Transaccion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import vo.Transaccion;
 
 /**
  *
  * @author USUARIO
  */
 public class Servlet_Transacciones extends HttpServlet {
-
+    
     JSONArray array;
     JSONObject json;
 
@@ -36,7 +38,7 @@ public class Servlet_Transacciones extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -54,46 +56,47 @@ public class Servlet_Transacciones extends HttpServlet {
 //        processRequest(request, response);
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");
-
+        
         array = new JSONArray();
-
         
+        ArrayList<Transaccion> transaccion = new ArrayList<>();
+        Admin_Transaccion transaccionDAO = new Admin_Transaccion();
         
+        transaccion = transaccionDAO.leerTransaccion();
+        
+        for (int i = 0; i < transaccion.size(); i++) {
         json = new JSONObject();
-        json.put("Producto", "Producto de Prueba 111");
-        json.put("Valor_Ingresado", "50.000");
-        json.put("Vueltas", "48700");
-        json.put("Fecha", "30/03/2018");
-        json.put("Operacion", "1");
+        json.put("id", transaccion.get(i).getId());
+        json.put("Producto", transaccion.get(i).getProducto().getNombre());
+        json.put("Valor_Ingresado", transaccion.get(i).getEntradaDinero());
+        json.put("Vueltas", transaccion.get(i).getSalidaDinero());
+        json.put("Fecha", transaccion.get(i).getFecha());
         array.put(json);
-
+            
+        }
         
         
-        json = new JSONObject();
-        json.put("Producto", "Producto de Prueba 222");
-        json.put("Valor_Ingresado", "50.000");
-        json.put("Vueltas", "48700");
-        json.put("Fecha", "30/03/2018");
-        json.put("Operacion", "1");
-        array.put(json);
-
-        
-        
-        
-        json = new JSONObject();
-        json.put("Producto", "Producto de Prueba 333");
-        json.put("Valor_Ingresado", "50.000");
-        json.put("Vueltas", "48700");
-        json.put("Fecha", "30/03/2018");
-        json.put("Operacion", "1");
-        array.put(json);
-        
+//        json = new JSONObject();
+//        json.put("Producto", "Producto de Prueba 222");
+//        json.put("Valor_Ingresado", "50.000");
+//        json.put("Vueltas", "48700");
+//        json.put("Fecha", "30/03/2018");
+//        json.put("Operacion", "1");
+//        array.put(json);
+//        
+//        json = new JSONObject();
+//        json.put("Producto", "Producto de Prueba 333");
+//        json.put("Valor_Ingresado", "50.000");
+//        json.put("Vueltas", "48700");
+//        json.put("Fecha", "30/03/2018");
+//        json.put("Operacion", "1");
+//        array.put(json);
         
         JSONObject mainJson = new JSONObject();
         System.out.println("Leyendo...");
         mainJson.put("base", array);
         out.print(mainJson);
-
+        
     }
 
     /**

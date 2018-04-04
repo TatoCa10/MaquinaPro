@@ -1,6 +1,7 @@
 package controlador;
 
 import dao.admin.Admin_Casilla;
+import dao.admin.Admin_Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -53,6 +54,8 @@ public class ServletCasillas extends HttpServlet {
         response.setContentType("application/json");
 
         Producto producto = new Producto();
+        
+        
 
         Admin_Casilla casillaDAO = new Admin_Casilla();
 
@@ -72,6 +75,7 @@ public class ServletCasillas extends HttpServlet {
                 casilla.setEspacio(Integer.parseInt(Numero_Casillas));
 
                 if (casillaDAO.crearCasilla(casilla)) {
+                    
                     JSONObject json = new JSONObject();
                     json.put("confirmacion", Numero_Casillas + " Casillas creadas");
                     System.out.println(Numero_Casillas + " Casillas creadas");
@@ -87,6 +91,10 @@ public class ServletCasillas extends HttpServlet {
             } else if (indicador.equals("0")) {
                 Casilla casilla = new Casilla();
                 casilla.setID(Ubicacion);
+                
+                
+                
+                
                 producto.setNombre(Nombre);
                 casilla.setProducto(producto);
                 casilla.setCantidadProducto(Integer.parseInt(Cantidad));
@@ -95,7 +103,7 @@ public class ServletCasillas extends HttpServlet {
 
                 if (casillaDAO.modificarCasilla(casilla)) {
 
-                    String Full = Numero_Casillas + " / " + Nombre + " / " + Ubicacion + " / " + Cantidad;
+                    String Full = " / " + Nombre + " / " + Ubicacion + " / " + Cantidad;
                     JSONObject json = new JSONObject();
                     json.put("confirmacion", Full);
                     System.out.println(Full);
