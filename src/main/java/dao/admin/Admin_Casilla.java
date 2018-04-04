@@ -77,37 +77,66 @@ public class Admin_Casilla {
         Admin_Producto productoDAO = new Admin_Producto();
         ArrayList<Producto> prod = new ArrayList<>();
         prod = productoDAO.leerProducto();
-        
+
         if (leerCasilla() == null) {
             return result;
         }
 
         for (int i = 0; i < prod.size(); i++) {
             if (prod.get(i).getNombre().equals(casilla.getProducto().getNombre())) {
-                
-        String query = "update Casilla set ID = ?, Producto = ?, CantidadProducto= ? where ID = ?";
-        PreparedStatement preparedStmt = null;
-        try {
-            preparedStmt = this.conexion.prepareStatement(query);
-            preparedStmt.setString(1, casilla.getID());
-            // preparedStmt.setInt(2, casilla.getEspacio());
-            preparedStmt.setString(2, casilla.getProducto().getNombre());
-            preparedStmt.setInt(3, casilla.getCantidadProducto());
-            preparedStmt.setString(4, casilla.getID());
 
-            if (preparedStmt.executeUpdate() > 0) {
-                result = true;
-            }
+                String query = "update Casilla set ID = ?, Producto = ?, CantidadProducto= ? where ID = ?";
+                PreparedStatement preparedStmt = null;
+                try {
+                    preparedStmt = this.conexion.prepareStatement(query);
+                    preparedStmt.setString(1, casilla.getID());
+                    // preparedStmt.setInt(2, casilla.getEspacio());
+                    preparedStmt.setString(2, casilla.getProducto().getNombre());
+                    preparedStmt.setInt(3, casilla.getCantidadProducto());
+                    preparedStmt.setString(4, casilla.getID());
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-            } else if(i==prod.size()){
+                    if (preparedStmt.executeUpdate() > 0) {
+                        result = true;
+                    }
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } else if (i == prod.size()) {
                 return false;
             }
         }
 
         return result;
+    }
+
+    public int numeroCasillas() {
+
+        String consulta = "SELECT COUNT(id) FROM Casilla";
+
+        try {
+            //Statement
+            Statement statement
+                    = this.conexion.createStatement();
+            //Ejecucion
+            ResultSet resultado
+                    = statement.executeQuery(consulta);
+            //----------------------------
+            //Recorrido sobre el resultado
+            if (resultado != null) {
+                int i = resultado.getInt(1);
+                System.out.println();
+                return i;
+
+            } else {
+                return 0;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return 0;
     }
 
     public ArrayList<Casilla> leerCasilla() {
@@ -117,11 +146,12 @@ public class Admin_Casilla {
         ArrayList<Casilla> respuesta = new ArrayList<>();
         ArrayList<Producto> productos = new ArrayList<>();
         productos = producoDAO.leerProducto();
+        int cantCasillas = numeroCasillas();
 
         for (int i = 0; i < productos.size(); i++) {
             System.out.println("Rescatando productos:");
             System.out.println(i + " " + productos.get(i).getNombre());
-               }
+        }
         String consulta = "SELECT * FROM Casilla";
 
         try {
@@ -138,12 +168,23 @@ public class Admin_Casilla {
                 Casilla casillaVO = new Casilla();
 
                 casillaVO.setID(resultado.getString(1));
-                
 
-                for (int i = 0; i < productos.size(); i++) {
+                for (int i = 0; i < cantCasillas; i++) {
 
-                    if (productos.get(i).nombre.equals(resultado.getString(2))) {
-                        casillaVO.setProducto(productos.get(i));
+                    if (resultado.getString(2).equals("Vacio")) {
+                        Producto prod = new Producto();
+                        prod.setNombre("Vacio");
+                        prod.setPrecio(0);
+                        casillaVO.setProducto(prod);
+                    } else {
+
+                        for (int j = 0; j < productos.size(); j++) {
+
+                            if (productos.get(i).nombre.equals(resultado.getString(2))) {
+                                casillaVO.setProducto(productos.get(i));
+                            }
+                        }
+
                     }
 
                 }
@@ -151,9 +192,9 @@ public class Admin_Casilla {
                 casillaVO.setCantidadProducto(resultado.getInt(3));
                 respuesta.add(casillaVO);
             }
-            
+
             for (int i = 0; i < respuesta.size(); i++) {
-                System.out.println("Prod desde Metedo: "+respuesta.get(i).getProducto().getNombre());
+                System.out.println("Prod desde Metedo: " + respuesta.get(i).getProducto().getNombre());
             }
 
         } catch (SQLException ex) {
