@@ -23,7 +23,7 @@ $(document).ready(function () {
             
             $("#llegada").append(
                     
-                        "<div class='module'><center><p>"+data.casillas[i].nombre+"'</p><div id='Ubicacion'>"+data.casillas[i].ubicacion+"</div><div id='Precio'>"+data.casillas[i].precio+"</div></center></div>");
+                        "<div class='module'><center><p>"+data.casillas[i].nombre+"'</p><div id='Ubicacion'>"+data.casillas[i].ubicacion+"</div><div id='Precio'>$"+data.casillas[i].precio+"</div></center></div>");
                 
             }
            // $("#llegada").append("<div class='module' style='height:140px'>" + data.test + "<div>D4</div></div>");
