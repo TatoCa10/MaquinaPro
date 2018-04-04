@@ -68,61 +68,61 @@ public class ServletCajas extends HttpServlet {
 
         int[] Denominaciones = new int[10];
 
-        if (moneda50 == null) {
+        if (moneda50.equals("")) {
             Denominaciones[0] = 0;
         } else {
             Denominaciones[0] = Integer.parseInt(moneda50);
         }
 
-        if (moneda100 == null) {
+        if (moneda100.equals("")) {
             Denominaciones[1] = 0;
         } else {
             Denominaciones[1] = Integer.parseInt(moneda100);
         }
 
-        if (moneda200 == null) {
+        if (moneda200.equals("")) {
             Denominaciones[2] = 0;
         } else {
             Denominaciones[2] = Integer.parseInt(moneda200);
         }
 
-        if (moneda500 == null) {
+        if (moneda500.equals("")) {
             Denominaciones[3] = 0;
         } else {
             Denominaciones[3] = Integer.parseInt(moneda500);
         }
 
-        if (moneda1000 == null) {
+        if (moneda1000.equals("")) {
             Denominaciones[4] = 0;
         } else {
             Denominaciones[4] = Integer.parseInt(moneda1000);
         }
 
-        if (billete2000 == null) {
+        if (billete2000.equals("")) {
             Denominaciones[5] = 0;
         } else {
             Denominaciones[5] = Integer.parseInt(billete2000);
         }
 
-        if (billete5000 == null) {
+        if (billete5000.equals("")) {
             Denominaciones[6] = 0;
         } else {
             Denominaciones[6] = Integer.parseInt(billete5000);
         }
 
-        if (billete10000 == null) {
+        if (billete10000.equals("")) {
             Denominaciones[7] = 0;
         } else {
             Denominaciones[7] = Integer.parseInt(billete10000);
         }
 
-        if (billete20000 == null) {
+        if (billete20000.equals("")) {
             Denominaciones[8] = 0;
         } else {
             Denominaciones[8] = Integer.parseInt(billete20000);
         }
 
-        if (billete50000 == null) {
+        if (billete50000.equals("")) {
             Denominaciones[9] = 0;
         } else {
             Denominaciones[9] = Integer.parseInt(billete50000);
