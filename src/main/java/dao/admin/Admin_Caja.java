@@ -89,7 +89,7 @@ public class Admin_Caja {
     
     public int[] leerCajaSaldo() {
         //1.Consulta
-        int[] respuesta = new int[9];
+        int[] respuesta = new int[10];
         int i = 0;
         String consulta = "SELECT cantidad FROM Caja";
         try {
@@ -117,7 +117,7 @@ public class Admin_Caja {
     
     public int[] leerCajaEspacio() {
         //1.Consulta
-        int[] respuesta = new int[9];
+        int[] respuesta = new int[10];
         int i = 0;
         String consulta = "SELECT espacioMaximo FROM Caja";
         try {
