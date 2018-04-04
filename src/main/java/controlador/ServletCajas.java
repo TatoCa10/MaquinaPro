@@ -132,10 +132,11 @@ public class ServletCajas extends HttpServlet {
         espacioCajita = cajita.leerCajaEspacio();
 
         for (int i = 0; i < saldoCajita.length; i++) {
+            int respaldo = saldoCajita[i];
             saldoCajita[i] = saldoCajita[i] + Denominaciones[i];
 
             if (saldoCajita[i] > espacioCajita[i]) {
-
+                saldoCajita[i]=respaldo;
                 JSONObject json = new JSONObject();
                 json.put("confirmacion", "No hay espacio suficiente");
                 System.out.println("No hay espacio suficiente");
