@@ -190,11 +190,11 @@ function cancelar() {
     document.getElementById("log").innerHTML = "";
 
     var comprobar = 0;
-    for (var i = 0; i < denominaciones.length; i++) {
+    for (var i = 1; i < denominaciones.length-1; i++) {
         comprobar = comprobar + denominaciones[i];
     }
     if (comprobar !== 0) {
-        for (var i = 0; i < denominaciones.length; i++) {
+        for (var i = 1; i < denominaciones.length-1; i++) {
             switch (i) {
                 case 0:
                     for (var j = 0; j < denominaciones[i]; j++) {
@@ -249,7 +249,7 @@ function cancelar() {
             }
         }
     }
-    for (var i = 0; i < denominaciones.length; i++) {
+    for (var i = 1; i < denominaciones.length-1; i++) {
         denominaciones[i] = 0;
     }
 }
