@@ -85,22 +85,44 @@ public class Admin_Casilla {
         for (int i = 0; i < prod.size(); i++) {
             if (prod.get(i).getNombre().equals(casilla.getProducto().getNombre())) {
 
-                String query = "update Casilla set ID = ?, Producto = ?, CantidadProducto= ? where ID = ?";
-                PreparedStatement preparedStmt = null;
-                try {
-                    preparedStmt = this.conexion.prepareStatement(query);
-                    preparedStmt.setString(1, casilla.getID());
-                    // preparedStmt.setInt(2, casilla.getEspacio());
-                    preparedStmt.setString(2, casilla.getProducto().getNombre());
-                    preparedStmt.setInt(3, casilla.getCantidadProducto());
-                    preparedStmt.setString(4, casilla.getID());
+                if (casilla.getCantidadProducto() == 0) {
+                    String query = "update Casilla set ID = ?, Producto = ?, CantidadProducto= ? where ID = ?";
+                    PreparedStatement preparedStmt = null;
+                    try {
+                        preparedStmt = this.conexion.prepareStatement(query);
+                        preparedStmt.setString(1, casilla.getID());
+                        // preparedStmt.setInt(2, casilla.getEspacio());
+                        preparedStmt.setString(2, "Vacio");
+                        preparedStmt.setInt(3, 0);
+                        preparedStmt.setString(4, casilla.getID());
 
-                    if (preparedStmt.executeUpdate() > 0) {
-                        result = true;
+                        if (preparedStmt.executeUpdate() > 0) {
+                            result = true;
+                        }
+
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+
+                    String query = "update Casilla set ID = ?, Producto = ?, CantidadProducto= ? where ID = ?";
+                    PreparedStatement preparedStmt = null;
+                    try {
+                        preparedStmt = this.conexion.prepareStatement(query);
+                        preparedStmt.setString(1, casilla.getID());
+                        // preparedStmt.setInt(2, casilla.getEspacio());
+                        preparedStmt.setString(2, casilla.getProducto().getNombre());
+                        preparedStmt.setInt(3, casilla.getCantidadProducto());
+                        preparedStmt.setString(4, casilla.getID());
+
+                        if (preparedStmt.executeUpdate() > 0) {
+                            result = true;
+                        }
+
+                    } catch (SQLException e) {
+                        e.printStackTrace();
                     }
 
-                } catch (SQLException e) {
-                    e.printStackTrace();
                 }
             } else if (i == prod.size()) {
                 return false;
@@ -109,7 +131,6 @@ public class Admin_Casilla {
 
         return result;
     }
-
 
     public ArrayList<Casilla> leerCasilla() {
         Admin_Producto producoDAO = new Admin_Producto();
@@ -140,21 +161,20 @@ public class Admin_Casilla {
 
                 casillaVO.setID(resultado.getString(1));
 
+                if (resultado.getString(2).equals("Vacio")) {
+                    Producto prod = new Producto();
+                    prod.setNombre("Vacio");
+                    prod.setPrecio(0);
+                    casillaVO.setProducto(prod);
+                } else {
 
-                    if (resultado.getString(2).equals("Vacio")) {
-                        Producto prod = new Producto();
-                        prod.setNombre("Vacio");
-                        prod.setPrecio(0);
-                        casillaVO.setProducto(prod);
-                    } else {
+                    for (int j = 0; j < productos.size(); j++) {
 
-                        for (int j = 0; j < productos.size(); j++) {
-
-                            if (productos.get(j).nombre.equals(resultado.getString(2))) {
-                                casillaVO.setProducto(productos.get(j));
-                                break;
-                            }
+                        if (productos.get(j).nombre.equals(resultado.getString(2))) {
+                            casillaVO.setProducto(productos.get(j));
+                            break;
                         }
+                    }
                 }
 
                 casillaVO.setCantidadProducto(resultado.getInt(3));

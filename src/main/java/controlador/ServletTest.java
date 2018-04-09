@@ -93,7 +93,15 @@ public class ServletTest extends HttpServlet {
         for (int i = 0; i < listaCasillas.size(); i++) {
             System.out.println("Productos servletTest: " + listaCasillas.get(i).getProducto().getNombre());
             if (ubicacion.equals(listaCasillas.get(i).getID())) {
-                producto = listaCasillas.get(i).getProducto().getNombre();
+
+                if (listaCasillas.get(i).getProducto().getNombre().equals("Vacio")) {
+                    json = new JSONObject();
+                    json.put("confirmacion", "3");
+
+                    out.print(json);
+                } else {
+                    producto = listaCasillas.get(i).getProducto().getNombre();
+                }
             }
 
         }
