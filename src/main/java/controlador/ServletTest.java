@@ -100,6 +100,7 @@ public class ServletTest extends HttpServlet {
 
                     out.print(json);
                 } else {
+                    System.out.println("Entro al else :( "+listaCasillas.get(i).getProducto().getNombre());
                     producto = listaCasillas.get(i).getProducto().getNombre();
                 }
             }
@@ -239,7 +240,7 @@ public class ServletTest extends HttpServlet {
                     }
                 } else {
                     json = new JSONObject();
-                    json.put("confirmacion", "3");
+                    json.put("confirmacion", "5");
 
                     out.print(json);
                 }
