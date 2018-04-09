@@ -44,6 +44,7 @@ public class Servicio_Caja {
         int[] vueltas = new int[10];
         int[] vueltasMenoresAMil = new int[10];
         int[] vueltasCompletas = new int[10];
+        Caja cajita = new Caja();
 
         int[] saldoCaja = caja.leerCajaSaldo();
 
@@ -243,6 +244,20 @@ public class Servicio_Caja {
             System.out.println("Arreglo de Vueltas: "+vueltasCompletas[i]);
             
         }
+        
+        
+         for (int i = 0; i < saldoCaja.length; i++) {
+             
+             saldoCaja[i] = saldoCaja[i] - vueltasCompletas[i];
+             
+             cajita.setSaldo(saldoCaja);
+
+            
+        }
+        
+        caja.modificarCaja(cajita);
+        
+        
         return vueltasCompletas;
     }
 
