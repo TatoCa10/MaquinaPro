@@ -23,6 +23,62 @@ $(document).ready(function () {
 
                     $("#log").append("<p>No le alcanza: " + data.confirmacion + "</p> <br>");
 
+                    for (var i = 0; i < 10; i++) {
+                        switch (i) {
+                            case 0:
+                                for (var j = 0; j < data.m50; j++) {
+                                    $("#log").append("<img class='tabla' src='50.png' alt='50 COP'><br>");
+                                }
+                                break;
+                            case 1:
+                                for (var j = 0; j < data.m100; j++) {
+                                    $("#log").append("<img class='tabla' src='100.png' alt='100 COP'><br>");
+                                }
+                                break;
+                            case 2:
+                                for (var j = 0; j < data.m200; j++) {
+                                    $("#log").append("<img class='tabla' src='200.png' alt='100 COP'><br>");
+                                }
+                                break;
+                            case 3:
+                                for (var j = 0; j < data.m500; j++) {
+                                    $("#log").append("<img class='tabla' src='500.png' alt='500 COP'><br>");
+                                }
+                                break;
+                            case 4:
+                                for (var j = 0; j < data.m1000; j++) {
+                                    $("#log").append("<img class='tabla' src='1000.png' alt='1000 COP'><br>");
+                                }
+                                break;
+                            case 5:
+                                for (var j = 0; j < data.b2000; j++) {
+                                    $("#log").append("<img class='tabla2' src='2000.png' alt='2000 COP'><br>");
+                                }
+                                break;
+                            case 6:
+                                for (var j = 0; j < data.b5000; j++) {
+                                    $("#log").append("<img class='tabla2' src='5000.jpg' alt='5000 COP'><br>");
+                                }
+                                break;
+                            case 7:
+                                for (var j = 0; j < data.b10000; j++) {
+                                    $("#log").append("<img class='tabla2' src='10000.jpg' alt='10000 COP'><br>");
+                                }
+                                break;
+                            case 8:
+                                for (var j = 0; j < data.b20000; j++) {
+                                    $("#log").append("<img class='tabla2' src='20000.png' alt='20000 COP'><br>");
+                                }
+                                break;
+                            case 9:
+                                for (var j = 0; j < data.b50000; j++) {
+                                    $("#log").append("<img class='tabla2' src='50000.jpg' alt='50000 COP'><br>");
+                                }
+                                break;
+                        }
+                    }
+
+
 
                 }
                 if (data.confirmacion === "2") {

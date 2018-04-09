@@ -15,27 +15,25 @@ import vo.Caja;
 public class Servicio_Caja {
 
     private Admin_Caja caja = new Admin_Caja();
-    
 
     public Integer entradaDinero(Caja cajas) {
         int[] saldo = caja.leerCajaSaldo();
         int[] espacio = caja.leerCajaEspacio();
-        int respuesta=0;
-        
+        int respuesta = 0;
+
         for (int i = 0; i < saldo.length; i++) {
-            
+
             cajas.getSaldo()[i] = cajas.getSaldo()[i] + saldo[i];
-            
+
             if (cajas.getSaldo()[i] > espacio[i]) {
-                respuesta=1;
+                respuesta = 1;
                 return respuesta;
             }
-            
+
         }
-        
+
         caja.modificarCaja(cajas);
-        
-        
+
         return respuesta;
     }
 
@@ -82,6 +80,12 @@ public class Servicio_Caja {
                 int numeroMenorAMil = cuarto + tercero;
 
                 vueltasMenoresAMil = salidaDinero(numeroMenorAMil);
+
+                if (vueltasMenoresAMil.length < 2) {
+                    int[] vueltasIncompletas = new int[1];
+                    System.out.println("No hay dinero en caja");
+                    return vueltasIncompletas;
+                }
 
             }
 
@@ -240,24 +244,21 @@ public class Servicio_Caja {
             }
         }
         for (int i = 0; i < vueltasCompletas.length; i++) {
-            
-            System.out.println("Arreglo de Vueltas: "+vueltasCompletas[i]);
-            
-        }
-        
-        
-         for (int i = 0; i < saldoCaja.length; i++) {
-             
-             saldoCaja[i] = saldoCaja[i] - vueltasCompletas[i];
-             
-             cajita.setSaldo(saldoCaja);
 
-            
+            System.out.println("Arreglo de Vueltas: " + vueltasCompletas[i]);
+
         }
-        
+
+        for (int i = 0; i < saldoCaja.length; i++) {
+
+            saldoCaja[i] = saldoCaja[i] - vueltasCompletas[i];
+
+            cajita.setSaldo(saldoCaja);
+
+        }
+
         caja.modificarCaja(cajita);
-        
-        
+
         return vueltasCompletas;
     }
 
