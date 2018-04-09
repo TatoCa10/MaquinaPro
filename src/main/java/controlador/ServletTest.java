@@ -85,7 +85,8 @@ public class ServletTest extends HttpServlet {
         String producto = "";
 
         for (int i = 0; i < listaCasillas.size(); i++) {
-
+            
+            System.out.println("Productos servletTest: "+listaCasillas.get(i).getProducto().getNombre());
             if (ubicacion.equals(listaCasillas.get(i).getProducto().getNombre())) {
                 producto = listaCasillas.get(i).getProducto().getNombre();
             }
