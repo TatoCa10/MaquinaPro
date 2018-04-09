@@ -188,7 +188,7 @@ public class ServletTest extends HttpServlet {
 
                             trans.setProducto(prood);
                             trans.setEntradaDinero(Suma);
-                            trans.setSalidaDinero(0);
+                            trans.setSalidaDinero(Suma - precio);
 
                             transaccion.crearTransaccion(trans);
 

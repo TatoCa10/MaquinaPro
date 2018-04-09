@@ -27,7 +27,7 @@ $(document).ready(function () {
                 }
                 if (data.confirmacion === "2") {
 
-                    $("#log").append("<p>No le alcanza: " + data.confirmacion + "</p> <br>");
+                    $("#log").append("<p>Producto dispensado: " + data.confirmacion + "</p> <br>");
                     $("#hole").append("Vueltas: ");
                     $("#borde2").append("<center><div id='Producto'>" + data.producto + "</div>");
 
@@ -88,9 +88,9 @@ $(document).ready(function () {
 
                 }
                 if (data.confirmacion === "3") {
-                    
+
                     $("#log").append("<p>Error de transaccion: " + data.confirmacion + "</p> <br>");
-                    
+
                 }
 
                 if (data.confirmacion === "4") {
@@ -181,6 +181,8 @@ function respuesta(plata) {
 
 function cancelar() {
 
+
+
     document.getElementById("text").value = "CODE";
     document.getElementById("launch").click();
     document.getElementById("dinero").value = "$0";
@@ -189,12 +191,15 @@ function cancelar() {
     console.log(denominaciones);
     document.getElementById("log").innerHTML = "";
 
+    document.getElementById("hole").innerHTML = "";
+    document.getElementById("borde2").innerHTML = "";
+
     var comprobar = 0;
-    for (var i = 1; i < denominaciones.length-1; i++) {
+    for (var i = 1; i < denominaciones.length - 1; i++) {
         comprobar = comprobar + denominaciones[i];
     }
     if (comprobar !== 0) {
-        for (var i = 1; i < denominaciones.length-1; i++) {
+        for (var i = 1; i < denominaciones.length - 1; i++) {
             switch (i) {
                 case 0:
                     for (var j = 0; j < denominaciones[i]; j++) {
@@ -249,9 +254,13 @@ function cancelar() {
             }
         }
     }
-    for (var i = 1; i < denominaciones.length-1; i++) {
+
+
+    for (var i = 1; i < denominaciones.length - 1; i++) {
         denominaciones[i] = 0;
     }
+
+
 }
 
 

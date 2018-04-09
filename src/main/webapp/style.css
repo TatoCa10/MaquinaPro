@@ -194,3 +194,12 @@ body{
     left: 900px
     /*left: 1145px*/
 }
+
+#Producto{
+    margin-top:  5px;
+    border: 1px solid #DF7401;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    color: #ffffff;
+    font-size: 30px;
+}
