@@ -28,10 +28,7 @@
         <servlet-name>ServletCajas</servlet-name>
         <servlet-class>controlador.ServletCajas</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ServletTest</servlet-name>
-        <servlet-class>controlador.ServletTest</servlet-class>
-    </servlet>
+    
     <servlet>
         <servlet-name>RegistroUsuarioServlet</servlet-name>
         <servlet-class>controlador.RegistroUsuarioServlet</servlet-class>
@@ -110,10 +107,7 @@
         <servlet-name>Servlet_Transacciones</servlet-name>
         <url-pattern>/Servlet_Transacciones</url-pattern>
     </servlet-mapping>   
-    <servlet-mapping>
-        <servlet-name>ServletTest</servlet-name>
-        <url-pattern>/ServletTest</url-pattern>
-    </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>MostrarTiendaServlet</servlet-name>
         <url-pattern>/MostrarTiendaServlet</url-pattern>
