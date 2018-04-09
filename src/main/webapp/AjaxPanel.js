@@ -1,4 +1,4 @@
-var denominaciones = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var denominaciones = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
 
 $(document).ready(function () {
 
@@ -159,7 +159,7 @@ $(document).ready(function () {
 
                     $("#log").append("<p>Imposible dar vueltas: " + data.confirmacion + "</p> <br>");
                     
-                    for (var i = 0; i < 10; i++) {
+                    for (var i = 0; i < 11; i++) {
                         switch (i) {
                             case 0:
                                 for (var j = 0; j < data.m50; j++) {
@@ -259,34 +259,34 @@ function actualizar() {
 function respuesta(plata) {
     switch (plata) {
         case 50:
-            denominaciones[0] = denominaciones[0] + 1;
-            break;
-        case 100:
             denominaciones[1] = denominaciones[1] + 1;
             break;
-        case 200:
+        case 100:
             denominaciones[2] = denominaciones[2] + 1;
             break;
-        case 500:
+        case 200:
             denominaciones[3] = denominaciones[3] + 1;
             break;
-        case 1000:
+        case 500:
             denominaciones[4] = denominaciones[4] + 1;
             break;
-        case 2000:
+        case 1000:
             denominaciones[5] = denominaciones[5] + 1;
             break;
-        case 5000:
+        case 2000:
             denominaciones[6] = denominaciones[6] + 1;
             break;
-        case 10000:
+        case 5000:
             denominaciones[7] = denominaciones[7] + 1;
             break;
-        case 20000:
+        case 10000:
             denominaciones[8] = denominaciones[8] + 1;
             break;
-        case 50000:
+        case 20000:
             denominaciones[9] = denominaciones[9] + 1;
+            break;
+        case 50000:
+            denominaciones[10] = denominaciones[10] + 1;
             break;
     }
 

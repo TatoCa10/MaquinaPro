@@ -100,7 +100,7 @@ public class ServletTest extends HttpServlet {
 
                     out.print(json);
                 } else {
-                    System.out.println("Entro al else :( "+listaCasillas.get(i).getProducto().getNombre());
+                    System.out.println("Entro al else :( " + listaCasillas.get(i).getProducto().getNombre());
                     producto = listaCasillas.get(i).getProducto().getNombre();
                 }
             }
@@ -241,6 +241,16 @@ public class ServletTest extends HttpServlet {
                 } else {
                     json = new JSONObject();
                     json.put("confirmacion", "5");
+                    json.put("m50", Arreglo[0]);
+                    json.put("m100", Arreglo[1]);
+                    json.put("m200", Arreglo[2]);
+                    json.put("m500", Arreglo[3]);
+                    json.put("m1000", Arreglo[4]);
+                    json.put("b2000", Arreglo[5]);
+                    json.put("b5000", Arreglo[6]);
+                    json.put("b10000", Arreglo[7]);
+                    json.put("b20000", Arreglo[8]);
+                    json.put("b50000", Arreglo[9]);
 
                     out.print(json);
                 }
