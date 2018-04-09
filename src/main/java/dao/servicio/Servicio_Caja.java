@@ -14,7 +14,7 @@ import vo.Caja;
  */
 public class Servicio_Caja {
 
-    private Admin_Caja caja;
+    private Admin_Caja caja = new Admin_Caja();
     
 
     public Integer entradaDinero(Caja cajas) {
