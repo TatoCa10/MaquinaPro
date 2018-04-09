@@ -15,7 +15,7 @@ import vo.Casilla;
 
 public class Servicio_Casilla {
 
-    private Admin_Casilla casilla;
+    private Admin_Casilla casilla = new Admin_Casilla();
 
     public Boolean entregarProducto(Casilla casillas) {
 
@@ -46,7 +46,7 @@ public class Servicio_Casilla {
 
     }
 
-    public Integer consultarPrecio(Casilla casillas) {
+    public int consultarPrecio(Casilla casillas) {
 
         ArrayList<Casilla> productos = casilla.leerCasilla();
         int respuesta;
