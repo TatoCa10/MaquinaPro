@@ -76,7 +76,7 @@ public class ServletTest extends HttpServlet {
         Caja cajaVO = new Caja();
         int precio;
 
-        String ubicacion = request.getParameter("ubicacion");
+        String ubicacion = request.getParameter("Ubicacion");
         String denominaciones = request.getParameter("Forma_Pago");
         String Sum = request.getParameter("Plata_Pago");
         int Suma = Integer.parseInt(Sum);
@@ -85,9 +85,8 @@ public class ServletTest extends HttpServlet {
         String producto = "";
 
         for (int i = 0; i < listaCasillas.size(); i++) {
-            
             System.out.println("Productos servletTest: "+listaCasillas.get(i).getProducto().getNombre());
-            if (ubicacion.equals(listaCasillas.get(i).getProducto().getNombre())) {
+            if (ubicacion.equals(listaCasillas.get(i).getID())) {
                 producto = listaCasillas.get(i).getProducto().getNombre();
             }
 
