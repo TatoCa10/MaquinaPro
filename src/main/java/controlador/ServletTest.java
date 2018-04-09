@@ -96,7 +96,7 @@ public class ServletTest extends HttpServlet {
         int Arreglo[] = new int[partes.length];
 
         System.out.println("Partes:" + partes.length);
-        for (int i = 0; i < partes.length; i++) {
+        for (int i = 1; i < partes.length-1; i++) {
             Arreglo[i] = Integer.parseInt(partes[i]);
         }
 

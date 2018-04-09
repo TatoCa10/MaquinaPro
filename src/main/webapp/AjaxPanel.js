@@ -8,7 +8,7 @@ $(document).ready(function () {
         var Ubicacion = comando;
         var Forma_Pago = denominaciones;
         var Plata_Pago = suma;
-        denominaciones = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        denominaciones = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
         document.getElementById("launch").click();
         $.ajax({
             url: 'ServletTest',
