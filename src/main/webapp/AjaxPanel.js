@@ -94,7 +94,7 @@ $(document).ready(function () {
                 }
 
                 if (data.confirmacion === "4") {
-                    $("#log").append("<p>No le alcanza: " + data.confirmacion + "</p> <br>");
+                    $("#log").append("<p>Producto dispensado: " + data.confirmacion + "</p> <br>");
                     $("#hole").append("Vueltas: 0");
                     $("#borde2").append("<center><div id='Producto'>" + data.producto + "</div>");
                 }
