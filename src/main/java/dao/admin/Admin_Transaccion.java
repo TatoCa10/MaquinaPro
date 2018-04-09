@@ -48,7 +48,7 @@ public class Admin_Transaccion {
 
             try {
                 //1.Establecer la consulta
-                String consulta = "INSERT INTO Transaccion VALUES(?,?,?,?)";
+                String consulta = "INSERT INTO Transaccion VALUES(?,?,?,CURRENT_DATE)";
                 //2. Crear el PreparedStament
                 PreparedStatement statement
                         = this.conexion.prepareStatement(consulta);
@@ -57,7 +57,6 @@ public class Admin_Transaccion {
                 statement.setString(2, transaccion.getProducto().getNombre());
                 statement.setInt(3, transaccion.getEntradaDinero());
                 statement.setInt(4, transaccion.getSalidaDinero());
-                statement.setDate(5, (Date) transaccion.getFecha());
 
                 //--------------------------------------
                 //3. Hacer la ejecucion

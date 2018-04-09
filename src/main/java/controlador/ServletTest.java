@@ -6,6 +6,7 @@ package controlador;
  * and open the template in the editor.
  */
 import dao.admin.Admin_Casilla;
+import dao.admin.Admin_Transaccion;
 import dao.servicio.Servicio_Caja;
 import dao.servicio.Servicio_Casilla;
 import java.io.IOException;
@@ -19,6 +20,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import vo.Caja;
 import vo.Casilla;
+import vo.Producto;
+import vo.Transaccion;
 
 /**
  *
@@ -65,6 +68,9 @@ public class ServletTest extends HttpServlet {
 
         array = new JSONArray();
 
+        Transaccion trans = new Transaccion();
+        Admin_Transaccion transaccion = new Admin_Transaccion();
+
         Admin_Casilla adminCasilla = new Admin_Casilla();
         ArrayList<Casilla> listaCasillas = new ArrayList<>();
         listaCasillas = adminCasilla.leerCasilla();
@@ -85,7 +91,7 @@ public class ServletTest extends HttpServlet {
         String producto = "";
 
         for (int i = 0; i < listaCasillas.size(); i++) {
-            System.out.println("Productos servletTest: "+listaCasillas.get(i).getProducto().getNombre());
+            System.out.println("Productos servletTest: " + listaCasillas.get(i).getProducto().getNombre());
             if (ubicacion.equals(listaCasillas.get(i).getID())) {
                 producto = listaCasillas.get(i).getProducto().getNombre();
             }
@@ -96,7 +102,7 @@ public class ServletTest extends HttpServlet {
         int Arreglo[] = new int[partes.length];
 
         System.out.println("Partes:" + partes.length);
-        for (int i = 1; i < partes.length-1; i++) {
+        for (int i = 1; i < partes.length - 1; i++) {
             Arreglo[i] = Integer.parseInt(partes[i]);
         }
 
@@ -143,7 +149,16 @@ public class ServletTest extends HttpServlet {
         if (precio != 0 || precio != 1) {
 
             if ((Suma - precio) == 0) {
+                Producto prood = new Producto();
                 casillaDAO.entregarProducto(casillaVO);
+                prood.setNombre(producto);
+
+                trans.setProducto(prood);
+                trans.setEntradaDinero(Suma);
+                trans.setSalidaDinero(0);
+
+                transaccion.crearTransaccion(trans);
+
                 json = new JSONObject();
                 json.put("confirmacion", "4");
                 json.put("producto", producto);
@@ -167,6 +182,16 @@ public class ServletTest extends HttpServlet {
 
                     if (ent == 0) {
                         if (casillaDAO.entregarProducto(casillaVO)) {
+
+                            Producto prood = new Producto();
+                            prood.setNombre(producto);
+
+                            trans.setProducto(prood);
+                            trans.setEntradaDinero(Suma);
+                            trans.setSalidaDinero(0);
+
+                            transaccion.crearTransaccion(trans);
+
                             json = new JSONObject();
                             json.put("confirmacion", "2");
                             json.put("m50", res[0]);
