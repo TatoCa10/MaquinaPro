@@ -9,7 +9,8 @@
         <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:700'>
         <link rel="stylesheet" href="style.css">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-        <script type="text/javascript" src="AjaxTest.js"></script>
+       <!-- <script type="text/javascript" src="AjaxTest.js"></script>-->
+        <script type="text/javascript" src="AjaxPanel.js"></script>
 
         <script>
             var a = 'A';
@@ -27,105 +28,9 @@
             var comando = '';
             var check = true;
             var suma = 0;
-            var denominaciones = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            var valores = [2000, 3500, 70000, 800, 1300, 600, 800, 1500];
-            var cantidades = [2, 4, 7, 1, 2, 2, 3, 3];
-            function resizeIframe() {
-                var miIframe = document.getElementById("myiframe");
-                var alturaPagina = miIframe.contentWindow.document.body.scrollHeight;
-                miIframe.style.height = alturaPagina;
-            }
-
-            function cargar(id) {
-                contar();
-                if (check === true) {
-                    comando = comando + id;
-                    document.getElementById("text").value = comando;
-                    actualizar();
-                } else {
-                    alert('Maximo de digitos');
-                    alert(comando);
-                }
-            }
-            function contar() {
-                if (comando.length <= 2) {
-                    check = true;
-                } else {
-                    check = false;
-                }
-            }
-            ;
-            function mandarCode() {
-                document.getElementById("launch").click();
-                /*Buscar Base De Datos Precio
-                 
-                 if (document.getElementById("text").value === "A1") {
-                 pedir();
-                 }*/
-                /*pedir();*/
-                servicio();
-            }
-
-            function actualizar() {
-                if (check === true) {
-                    document.getElementById("launch").click();
-                }
-                contar();
-            }
-            function respuesta(plata) {
-                switch (plata) {
-                    case 50:
-                        denominaciones[0] = denominaciones[0] + 1;
-                        break;
-                    case 100:
-                        denominaciones[1] = denominaciones[1] + 1;
-                        break;
-                    case 200:
-                        denominaciones[2] = denominaciones[2] + 1;
-                        break;
-                    case 500:
-                        denominaciones[3] = denominaciones[3] + 1;
-                        break;
-                    case 1000:
-                        denominaciones[4] = denominaciones[4] + 1;
-                        break;
-                    case 2000:
-                        denominaciones[5] = denominaciones[5] + 1;
-                        break;
-                    case 5000:
-                        denominaciones[6] = denominaciones[6] + 1;
-                        break;
-                    case 10000:
-                        denominaciones[7] = denominaciones[7] + 1;
-                        break;
-                    case 20000:
-                        denominaciones[8] = denominaciones[8] + 1;
-                        break;
-                    case 50000:
-                        denominaciones[9] = denominaciones[9] + 1;
-                        break;
-                }
-
-                suma = suma + plata;
-                document.getElementById("dinero").value = suma;
-
-                /*document.getElementById("submit_tabla").click();*/
-                /*document.getElementById("launch").click();*/
-                /*alert(suma);*/
-            }
             
-            function ingresarAdmin(){
-                document.getElementById("Input_Admin").style.visibility='visible';
-            }
-            function testPass(clave){
-                if(clave==="101099"){
-                    location.reload();
-                    location.href="MainAdmin.html";
-                }
-                else{
-                    document.getElementById("log").append("Error de llave");
-                }
-            }
+            
+            
         </script>
     </head>
 
@@ -154,7 +59,7 @@
                             <button onclick="cargar(num1)">1</button><button onclick="cargar(num2)">2</button><button onclick="cargar(num3)">3</button> <br>
                             <button onclick="cargar(num4)">4</button><button onclick="cargar(num5)">5</button><button onclick="cargar(num6)">6</button> <br>
                             <button onclick="cargar(num7)">7</button><button onclick="cargar(num8)">8</button><button onclick="cargar(num9)">9</button> <br>
-                            <button style="width: 165px" onclick="mandarCode()" id="pedir">Pedir</button><br>
+                            <button style="width: 165px" id="pedir">Pedir</button><br>
                             <button style="width: 165px" onclick="cancelar()" id="cancelar">Cancelar</button>
                         </div>
                     </div>

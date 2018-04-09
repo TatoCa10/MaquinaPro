@@ -1,17 +1,21 @@
+package controlador;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import dao.admin.Admin_Casilla;
 import dao.servicio.Servicio_Caja;
 import dao.servicio.Servicio_Casilla;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import vo.Caja;
 import vo.Casilla;
@@ -21,6 +25,9 @@ import vo.Casilla;
  * @author Carlos Alberto
  */
 public class ServletTest extends HttpServlet {
+
+    JSONArray array;
+    JSONObject json;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -56,6 +63,12 @@ public class ServletTest extends HttpServlet {
         //processRequest(request, response);
         response.setContentType("application/json");
 
+        array = new JSONArray();
+
+        Admin_Casilla adminCasilla = new Admin_Casilla();
+        ArrayList<Casilla> listaCasillas = new ArrayList<>();
+        listaCasillas = adminCasilla.leerCasilla();
+
         Servicio_Casilla casillaDAO = new Servicio_Casilla();
         Servicio_Caja cajaDAO = new Servicio_Caja();
 
@@ -64,10 +77,20 @@ public class ServletTest extends HttpServlet {
         int precio;
 
         String ubicacion = request.getParameter("ubicacion");
-        String denominaciones = request.getParameter("denominaciones");
-        int Suma = 0;
+        String denominaciones = request.getParameter("Forma_Pago");
+        String Sum = request.getParameter("Plata_Pago");
+        int Suma = Integer.parseInt(Sum);
 
         casillaVO.setID(ubicacion);
+        String producto = "";
+
+        for (int i = 0; i < listaCasillas.size(); i++) {
+
+            if (ubicacion.equals(listaCasillas.get(i).getProducto().getNombre())) {
+                producto = listaCasillas.get(i).getProducto().getNombre();
+            }
+
+        }
 
         String partes[] = denominaciones.split(",");
         int Arreglo[] = new int[partes.length];
@@ -77,56 +100,62 @@ public class ServletTest extends HttpServlet {
             Arreglo[i] = Integer.parseInt(partes[i]);
         }
 
-        for (int i = 0; i < Arreglo.length; i++) {
-            switch (i) {
-                case 0:
-                    Suma = Suma + Arreglo[i] * 50;
-                    break;
-                case 1:
-                    Suma = Suma + Arreglo[i] * 100;
-                    break;
-                case 2:
-                    Suma = Suma + Arreglo[i] * 200;
-                    break;
-                case 3:
-                    Suma = Suma + Arreglo[i] * 500;
-                    break;
-                case 4:
-                    Suma = Suma + Arreglo[i] * 1000;
-                    break;
-                case 5:
-                    Suma = Suma + Arreglo[i] * 2000;
-                    break;
-                case 6:
-                    Suma = Suma + Arreglo[i] * 5000;
-                    break;
-                case 7:
-                    Suma = Suma + Arreglo[i] * 10000;
-                    break;
-                case 8:
-                    Suma = Suma + Arreglo[i] * 20000;
-                    break;
-                case 9:
-                    Suma = Suma + Arreglo[i] * 50000;
-                    break;
-            }
-        }
-
+//        for (int i = 0; i < Arreglo.length; i++) {
+//            switch (i) {
+//                case 0:
+//                    Suma = Suma + Arreglo[i] * 50;
+//                    break;
+//                case 1:
+//                    Suma = Suma + Arreglo[i] * 100;
+//                    break;
+//                case 2:
+//                    Suma = Suma + Arreglo[i] * 200;
+//                    break;
+//                case 3:
+//                    Suma = Suma + Arreglo[i] * 500;
+//                    break;
+//                case 4:
+//                    Suma = Suma + Arreglo[i] * 1000;
+//                    break;
+//                case 5:
+//                    Suma = Suma + Arreglo[i] * 2000;
+//                    break;
+//                case 6:
+//                    Suma = Suma + Arreglo[i] * 5000;
+//                    break;
+//                case 7:
+//                    Suma = Suma + Arreglo[i] * 10000;
+//                    break;
+//                case 8:
+//                    Suma = Suma + Arreglo[i] * 20000;
+//                    break;
+//                case 9:
+//                    Suma = Suma + Arreglo[i] * 50000;
+//                    break;
+//            }
+//        }
         System.out.println("Ubicacion: " + ubicacion);
         System.out.println("Arreglo: " + denominaciones);
         System.out.println("Total Ingresado: " + Suma);
 
         precio = casillaDAO.consultarPrecio(casillaVO);
 
-        JSONObject json = new JSONObject();
-
         if (precio != 0 || precio != 1) {
 
             if ((Suma - precio) == 0) {
                 casillaDAO.entregarProducto(casillaVO);
+                json = new JSONObject();
+                json.put("confirmacion", "4");
+                json.put("producto", producto);
+
+                out.print(json);
 
             } else if ((Suma - precio) < 0) {
-                json.put("confirmacion", "FAIL");
+                json = new JSONObject();
+                json.put("confirmacion", "1");
+
+                out.print(json);
+
             } else if ((Suma - precio) > 0) {
                 int[] res = cajaDAO.salidaDinero(Suma - precio);
 
@@ -136,27 +165,49 @@ public class ServletTest extends HttpServlet {
                     int ent = cajaDAO.entradaDinero(cajaVO);
 
                     if (ent == 0) {
-                        casillaDAO.entregarProducto(casillaVO);
+                        if (casillaDAO.entregarProducto(casillaVO)) {
+                            json = new JSONObject();
+                            json.put("confirmacion", "2");
+                            json.put("m50", res[0]);
+                            json.put("m100", res[1]);
+                            json.put("m200", res[2]);
+                            json.put("m500", res[3]);
+                            json.put("m1000", res[4]);
+                            json.put("b2000", res[5]);
+                            json.put("b5000", res[6]);
+                            json.put("b10000", res[7]);
+                            json.put("b20000", res[8]);
+                            json.put("b50000", res[9]);
+                            json.put("producto", producto);
+
+                            out.print(json);
+
+                        }
+
                     } else {
-                        json.put("confirmacion", "FAIL");
+                        json = new JSONObject();
+                        json.put("confirmacion", "3");
+
+                        out.print(json);
                     }
                 } else {
-                    json.put("confirmacion", "FAIL");
+                    json = new JSONObject();
+                    json.put("confirmacion", "3");
+
+                    out.print(json);
                 }
             }
         } else {
-            json.put("confirmacion", "FAIL");
+            json = new JSONObject();
+            json.put("confirmacion", "3");
+
+            out.print(json);
         }
-
-        json.put("confirmacion", denominaciones);
-
-        out.print(json);
 
 //        JSONObject json = new JSONObject();
 //        json.put("confirmacion", denominaciones);
 //
 //        out.print(json);
-
     }
 
     /**

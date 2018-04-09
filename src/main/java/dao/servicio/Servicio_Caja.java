@@ -41,9 +41,9 @@ public class Servicio_Caja {
 
     public int[] salidaDinero(int numero) {
 
-        int[] vueltas = new int[9];
-        int[] vueltasMenoresAMil = new int[9];
-        int[] vueltasCompletas = new int[9];
+        int[] vueltas = new int[10];
+        int[] vueltasMenoresAMil = new int[10];
+        int[] vueltasCompletas = new int[10];
 
         int[] saldoCaja = caja.leerCajaSaldo();
 

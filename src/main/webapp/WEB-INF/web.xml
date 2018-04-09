@@ -29,8 +29,8 @@
         <servlet-class>controlador.ServletCajas</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AgregarProductoServlet</servlet-name>
-        <servlet-class>controlador.AgregarProductoServlet</servlet-class>
+        <servlet-name>ServletTest</servlet-name>
+        <servlet-class>controlador.ServletTest</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RegistroUsuarioServlet</servlet-name>
@@ -79,8 +79,8 @@
         <url-pattern>/Servlet_Productos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AgregarProductoServlet</servlet-name>
-        <url-pattern>/AgregarProductoServlet</url-pattern>
+        <servlet-name>ServletTest</servlet-name>
+        <url-pattern>/ServletTest</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletCajas</servlet-name>
