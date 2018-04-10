@@ -220,8 +220,10 @@ $(document).ready(function () {
                 /*document.getElementById("return").innerHTML = data.confirmacion;*/
             },
             error: function () {
+                
                 console.log("ERROR");
                 $("#log").append("ERROR");
+                cancelar();
             }
         });
     });
