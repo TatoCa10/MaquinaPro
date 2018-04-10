@@ -39,7 +39,7 @@ public class Admin_Casilla {
 
         ArrayList<Casilla> casi = leerCasilla();
         try {
-            for (int i = 0; i < casilla.getEspacio(); i++) {
+            for (int i = 1; i < casilla.getEspacio()+1; i++) {
                 //1.Establecer la consulta
                 String consulta = "INSERT INTO Casilla VALUES(?,?,?)";
                 //2. Crear el PreparedStament
