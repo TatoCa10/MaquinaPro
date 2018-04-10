@@ -114,6 +114,10 @@ public class ServletTest extends HttpServlet {
         for (int i = 1; i < partes.length - 1; i++) {
             System.out.println("Partes split: "+ partes[i]);
             Arreglo[i] = Integer.parseInt(partes[i]);
+        }
+        
+        for (int i = 0; i < Arreglo.length; i++) {
+            
             System.out.println("Numero cargado en Arreglo: "+Arreglo[i]);
         }
 

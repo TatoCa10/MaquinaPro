@@ -159,7 +159,7 @@ $(document).ready(function () {
 
                     $("#log").append("<p>Imposible dar vueltas: " + data.confirmacion + "</p> <br>");
                     
-                    for (var i = 0; i < 11; i++) {
+                    for (var i = 0; i < 10; i++) {
                         switch (i) {
                             case 0:
                                 for (var j = 0; j < data.m50; j++) {
