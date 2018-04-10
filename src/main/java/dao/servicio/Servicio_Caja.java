@@ -237,7 +237,7 @@ public class Servicio_Caja {
 
         for (int i = 0; i < vueltas.length; i++) {
 
-            if (vueltasCompletas[i] > 0 && saldoCaja[i] < vueltasCompletas[i] || saldoCaja[i] == 0) {
+            if (saldoCaja[i] < vueltasCompletas[i] || saldoCaja[i] == 0) {
                 int[] vueltasIncompletas = new int[1];
                 System.out.println("No hay dinero en caja");
                 return vueltasIncompletas;

@@ -201,6 +201,7 @@ public class ServletTest extends HttpServlet {
 
             } else if ((Suma - precio) > 0) {
                 int numero = Suma - precio;
+                System.out.println(numero);
                 int[] res = cajaDAO.salidaDinero(numero);
 
                 if (res.length > 2) {

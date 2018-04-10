@@ -53,6 +53,8 @@ public class ServletCajas extends HttpServlet {
         Admin_Caja cajita = new Admin_Caja();
         int[] saldoCajita = new int[10];
         int[] espacioCajita = new int[10];
+        
+        
 
         String moneda50 = request.getParameter("moneda50");
         String moneda100 = request.getParameter("moneda100");
