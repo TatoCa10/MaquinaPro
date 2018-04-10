@@ -106,13 +106,15 @@ public class ServletTest extends HttpServlet {
             }
 
         }
-
+        System.out.println("Denominaciones");
         String partes[] = denominaciones.split(",");
         int Arreglo[] = new int[partes.length];
 
         System.out.println("Partes:" + partes.length);
         for (int i = 1; i < partes.length - 1; i++) {
+            System.out.println("Partes split: "+ partes[i]);
             Arreglo[i] = Integer.parseInt(partes[i]);
+            System.out.println("Numero cargado en Arreglo: "+Arreglo[i]);
         }
 
 //        for (int i = 0; i < Arreglo.length; i++) {
